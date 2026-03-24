@@ -29,7 +29,7 @@ nvim  # Lazy auto-installs all plugins on first launch
 
 | Server | Languages |
 |--------|-----------|
-| `ts_ls` | TypeScript, JavaScript, JSX, TSX |
+| `vtsls` | TypeScript, JavaScript, JSX, TSX (VS Code's tsserver — path alias & monorepo support) |
 | `jsonls` | JSON, JSONC |
 | `cssls` | CSS, SCSS, LESS |
 | `html` | HTML |
@@ -76,16 +76,19 @@ Leader key: `<Space>`
 | `<leader>s.` | Recent files |
 | `<leader>/` | Fuzzy search in current buffer |
 
-**LSP**
+**LSP** — `gr` prefix로 통일 (Neovim 0.11 컨벤션)
 
 | Key | Action |
 |-----|--------|
-| `grn` | Rename symbol |
-| `gra` | Code action |
-| `grr` | Go to references |
-| `grd` | Go to definition |
-| `gri` | Go to implementation |
-| `grt` | Go to type definition |
+| `grd` | Go to **d**efinition ← `gd` 대신 이걸 써야 함 |
+| `grr` | Go to **r**eferences |
+| `gri` | Go to **i**mplementation |
+| `grt` | Go to **t**ype definition |
+| `grn` | Re**n**ame symbol |
+| `gra` | Code **a**ction |
+| `gO` | Document symbols |
+| `gW` | Workspace symbols |
+| `grD` | Go to declaration (헤더 등) |
 | `[d` / `]d` | Previous / next diagnostic |
 | `<leader>th` | Toggle inlay hints |
 

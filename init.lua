@@ -611,7 +611,18 @@ require('lazy').setup({
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
-        ts_ls = {},   -- TypeScript / JavaScript
+        vtsls = {
+          settings = {
+            vtsls = {
+              autoUseWorkspaceTsdk = true, -- use project's own TypeScript (critical for monorepos)
+            },
+            typescript = {
+              tsserver = {
+                maxTsServerMemory = 8192,
+              },
+            },
+          },
+        },
         jsonls = {},  -- JSON (with schema support)
         cssls = {},   -- CSS / SCSS / LESS
         html = {},    -- HTML
