@@ -9,6 +9,12 @@ return {
     local lint = require 'lint'
     lint.linters_by_ft = {
       markdown = { 'markdownlint' },
+      -- eslint_d: used when eslint config exists; biomejs: used when biome.json exists
+      -- each fails gracefully when its config file is not found in the project
+      javascript = { 'eslint_d', 'biomejs' },
+      typescript = { 'eslint_d', 'biomejs' },
+      javascriptreact = { 'eslint_d', 'biomejs' },
+      typescriptreact = { 'eslint_d', 'biomejs' },
     }
 
     -- To allow other plugins to add linters to require('lint').linters_by_ft,
