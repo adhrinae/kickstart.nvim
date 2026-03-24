@@ -89,6 +89,12 @@ Leader key: `<Space>`
 | `[d` / `]d` | Previous / next diagnostic |
 | `<leader>th` | Toggle inlay hints |
 
+**File Tree (Neo-tree)**
+
+| Key | Action |
+|-----|--------|
+| `\` | Toggle file tree (reveals current file) |
+
 **Other**
 
 | Key | Action |
