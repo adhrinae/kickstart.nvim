@@ -58,13 +58,28 @@ Biome runs when `biome.json` is found in the project. Falls back to prettierd au
 
 Leader key: `<Space>`
 
+**Buffers** (files open in memory — use these instead of tabs)
+
+| Key | Action |
+|-----|--------|
+| `]b` / `[b` | Next / previous buffer |
+| `<leader><leader>` | List all open buffers (fuzzy search) |
+| `<leader>bd` | Delete (close) current buffer |
+
+**Search**
+
 | Key | Action |
 |-----|--------|
 | `<leader>sf` | Find files |
 | `<leader>sg` | Live grep |
 | `<leader>sd` | Search diagnostics |
-| `<leader>f` | Format buffer |
-| `<leader>th` | Toggle inlay hints |
+| `<leader>s.` | Recent files |
+| `<leader>/` | Fuzzy search in current buffer |
+
+**LSP**
+
+| Key | Action |
+|-----|--------|
 | `grn` | Rename symbol |
 | `gra` | Code action |
 | `grr` | Go to references |
@@ -72,6 +87,15 @@ Leader key: `<Space>`
 | `gri` | Go to implementation |
 | `grt` | Go to type definition |
 | `[d` / `]d` | Previous / next diagnostic |
+| `<leader>th` | Toggle inlay hints |
+
+**Other**
+
+| Key | Action |
+|-----|--------|
+| `<leader>f` | Format buffer |
+| `<leader>q` | Open diagnostic quickfix list |
+| `<C-h/j/k/l>` | Move focus between splits |
 
 ## Structure
 
