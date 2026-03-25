@@ -620,6 +620,24 @@ require('lazy').setup({
               tsserver = {
                 maxTsServerMemory = 8192,
               },
+              inlayHints = {
+                parameterNames = { enabled = 'literals' },
+                parameterTypes = { enabled = true },
+                variableTypes = { enabled = false }, -- 너무 노이지할 수 있어서 기본 off
+                propertyDeclarationTypes = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                enumMemberValues = { enabled = true },
+              },
+            },
+            javascript = {
+              inlayHints = {
+                parameterNames = { enabled = 'literals' },
+                parameterTypes = { enabled = true },
+                variableTypes = { enabled = false },
+                propertyDeclarationTypes = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                enumMemberValues = { enabled = true },
+              },
             },
           },
         },

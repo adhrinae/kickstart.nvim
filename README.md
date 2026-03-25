@@ -90,13 +90,21 @@ Leader key: `<Space>`
 | `gW` | Workspace symbols |
 | `grD` | Go to declaration (헤더 등) |
 | `[d` / `]d` | Previous / next diagnostic |
-| `<leader>th` | Toggle inlay hints |
+| `<leader>th` | Toggle inlay hints (파라미터명, 타입, 반환타입 등) |
 
 **File Tree (Neo-tree)**
 
 | Key | Action |
 |-----|--------|
 | `\` | Toggle file tree (reveals current file) |
+
+**Terminal**
+
+| Key / Command | Action |
+|---------------|--------|
+| `:term` | 빌트인 터미널 열기 |
+| `<Esc><Esc>` | 터미널 모드 → 노멀 모드 |
+| `:term lazygit` | lazygit 실행 |
 
 **Other**
 
