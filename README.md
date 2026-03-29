@@ -14,6 +14,9 @@ npm install -g tree-sitter-cli
 # Neovim providers
 npm install -g neovim
 pip install pynvim
+
+# Linters (not managed by Mason)
+npm install -g markdownlint-cli
 ```
 
 ## Install

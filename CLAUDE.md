@@ -56,12 +56,22 @@ Biome is used when `biome.json` exists in the project root; otherwise prettierd 
 
 eslint_d and biomejs are both registered. Each fails silently when its config file isn't found, so the right one activates automatically per project.
 
-## Provider Setup
+## Initial Setup
 
-Required once per machine:
+Clone 후 최초 1회 실행:
 ```sh
+# 1. 시스템 의존성
+brew install neovim ripgrep fd
+
+# 2. Neovim providers & Tree-sitter CLI
 npm install -g neovim tree-sitter-cli
 pip install pynvim
+
+# 3. Mason이 관리하지 않는 글로벌 도구
+npm install -g markdownlint-cli
+
+# 4. Neovim 실행 (플러그인 자동 설치)
+nvim
 ```
 
 Perl and Ruby providers are intentionally disabled (`vim.g.loaded_perl_provider = 0`, `vim.g.loaded_ruby_provider = 0`).
