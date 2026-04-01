@@ -855,10 +855,9 @@ require('lazy').setup({
         },
       }
 
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      -- Load the colorscheme based on system appearance (macOS).
+      local is_dark = vim.fn.system('defaults read -g AppleInterfaceStyle 2>/dev/null'):find 'Dark'
+      vim.cmd.colorscheme(is_dark and 'tokyonight-moon' or 'tokyonight-day')
     end,
   },
 
