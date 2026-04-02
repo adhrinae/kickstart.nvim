@@ -645,9 +645,9 @@ require('lazy').setup({
             },
           },
         },
-        jsonls = {},  -- JSON (with schema support)
-        cssls = {},   -- CSS / SCSS / LESS
-        html = {},    -- HTML
+        jsonls = {}, -- JSON (with schema support)
+        cssls = {}, -- CSS / SCSS / LESS
+        html = {}, -- HTML
 
         stylua = {}, -- Used to format Lua code
 
@@ -691,8 +691,8 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'prettierd', -- Fast prettier daemon (JS/TS/JSON/CSS/HTML/YAML formatter)
-        'biome',     -- Fast JS/TS linter+formatter (used when biome.json exists)
-        'eslint_d',  -- Fast eslint daemon (used when eslint config exists)
+        'biome', -- Fast JS/TS linter+formatter (used when biome.json exists)
+        'eslint_d', -- Fast eslint daemon (used when eslint config exists)
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -868,7 +868,7 @@ require('lazy').setup({
   -- Highlight todo, notes, etc in comments
   {
     'folke/todo-comments.nvim',
-    event = 'VimEnter',
+    event = 'BufRead',
     dependencies = { 'nvim-lua/plenary.nvim' },
     ---@module 'todo-comments'
     ---@type TodoOptions
@@ -920,9 +920,25 @@ require('lazy').setup({
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
       local parsers = {
-        'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc',
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
         -- TypeScript / Node.js stack
-        'typescript', 'javascript', 'tsx', 'json', 'jsonc', 'yaml', 'css',
+        'typescript',
+        'javascript',
+        'tsx',
+        'json',
+        'jsonc',
+        'yaml',
+        'css',
       }
       require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {
