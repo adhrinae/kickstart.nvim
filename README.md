@@ -43,7 +43,8 @@ nvim  # Lazy auto-installs all plugins on first launch
 Priority order per filetype:
 
 - **JS/TS/JSX/TSX/JSON**: biome → prettierd → prettier (`stop_after_first`)
-- **CSS/HTML/YAML/Markdown**: prettierd → prettier
+- **CSS/HTML/YAML**: prettierd → prettier
+- **Markdown**: markdownlint → prettierd (both run; markdownlint --fix applied first)
 - **Lua**: stylua
 
 Biome runs when `biome.json` is found in the project. Falls back to prettierd automatically.
@@ -94,6 +95,7 @@ Leader key: `<Space>`
 | `grD` | Go to declaration (헤더 등) |
 | `[d` / `]d` | Previous / next diagnostic |
 | `<leader>th` | Toggle inlay hints (파라미터명, 타입, 반환타입 등) |
+| `<leader>td` | Toggle diagnostic virtual text (인라인 에러 메시지) |
 
 **File Tree (Neo-tree)**
 
