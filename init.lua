@@ -195,6 +195,11 @@ vim.diagnostic.config {
 }
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { desc = '[T]oggle Inlay [H]ints' })
+vim.keymap.set('n', '<leader>td', function()
+  local config = vim.diagnostic.config() or {}
+  vim.diagnostic.config { virtual_text = not config.virtual_text }
+end, { desc = '[T]oggle [D]iagnostic virtual text' })
 
 -- Buffer navigation
 vim.keymap.set('n', ']b', '<cmd>bnext<CR>', { desc = 'Next buffer' })
@@ -749,7 +754,7 @@ require('lazy').setup({
         css = { 'prettierd', 'prettier', stop_after_first = true },
         html = { 'prettierd', 'prettier', stop_after_first = true },
         yaml = { 'prettierd', 'prettier', stop_after_first = true },
-        markdown = { 'prettierd', 'prettier', stop_after_first = true },
+        markdown = { 'markdownlint', 'prettierd', 'prettier', stop_after_first = false },
       },
     },
   },
