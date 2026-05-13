@@ -47,10 +47,22 @@ Add to the `parsers` list in the nvim-treesitter config block:
 local parsers = { ..., 'python' }
 ```
 
+## Custom Keymaps
+
+| Key | Mode | Description |
+|-----|------|-------------|
+| `<leader>th` | n | Toggle inlay hints |
+| `<leader>td` | n | Toggle diagnostic virtual text (inline) |
+
 ## Formatter Priority (JS/TS)
 
 biome → prettierd → prettier, `stop_after_first = true`.
 Biome is used when `biome.json` exists in the project root; otherwise prettierd takes over.
+
+## Formatter Priority (Markdown)
+
+markdownlint → prettierd → prettier, `stop_after_first = false` (both run in sequence).
+`<leader>f`로 markdownlint --fix 후 prettierd 포맷까지 한 번에 적용.
 
 ## Linter Strategy (JS/TS)
 
