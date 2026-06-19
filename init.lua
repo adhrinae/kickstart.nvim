@@ -742,6 +742,11 @@ require('lazy').setup({
           }
         end
       end,
+      formatters = {
+        -- biome.json{,c}가 있는 프로젝트에서만 biome 실행.
+        -- 없으면 skip → 목록상 다음 포매터(prettierd/prettier)가 .prettierrc를 존중.
+        biome = { require_cwd = true },
+      },
       formatters_by_ft = {
         lua = { 'stylua' },
         -- biome runs first when biome.json exists; prettierd/prettier as fallback
