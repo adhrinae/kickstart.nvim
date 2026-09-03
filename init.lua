@@ -872,9 +872,22 @@ require('lazy').setup({
         },
       }
 
-      -- Load the colorscheme based on system appearance (macOS).
-      local is_dark = vim.fn.system('defaults read -g AppleInterfaceStyle 2>/dev/null'):find 'Dark'
-      vim.cmd.colorscheme(is_dark and 'tokyonight-moon' or 'tokyonight-day')
+      -- Follow the terminal background, not the macOS appearance setting.
+      -- Neovim queries the terminal with OSC 11 at startup and sets 'background'
+      -- from the reply, which can land after this config runs. The OptionSet
+      -- autocmd catches that late reply and any later change.
+      local function apply_colorscheme()
+        vim.cmd.colorscheme(vim.o.background == 'dark' and 'tokyonight-moon' or 'tokyonight-day')
+      end
+
+      vim.api.nvim_create_autocmd('OptionSet', {
+        pattern = 'background',
+        group = vim.api.nvim_create_augroup('tokyonight-follow-terminal', { clear = true }),
+        callback = apply_colorscheme,
+        desc = 'Match the colorscheme to the terminal background',
+      })
+
+      apply_colorscheme()
     end,
   },
 
