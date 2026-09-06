@@ -100,6 +100,12 @@ vim.g.have_nerd_font = false
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
+-- Use a dedicated Python provider environment when available.
+local python_provider = vim.fn.stdpath('data') .. '/python-provider/bin/python'
+if vim.fn.executable(python_provider) == 1 then
+  vim.g.python3_host_prog = python_provider
+end
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!

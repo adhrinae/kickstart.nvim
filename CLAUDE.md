@@ -73,11 +73,12 @@ eslint_d and biomejs are both registered. Each fails silently when its config fi
 Clone 후 최초 1회 실행:
 ```sh
 # 1. 시스템 의존성
-brew install neovim ripgrep fd
+brew install neovim ripgrep fd tree-sitter-cli
 
-# 2. Neovim providers & Tree-sitter CLI
-npm install -g neovim tree-sitter-cli
-pip install pynvim
+# 2. Neovim providers
+npm install -g neovim
+python3 -m venv ~/.local/share/nvim/python-provider
+~/.local/share/nvim/python-provider/bin/python -m pip install --upgrade pynvim
 
 # 3. Mason이 관리하지 않는 글로벌 도구
 npm install -g markdownlint-cli

@@ -9,15 +9,19 @@ Personal Neovim configuration based on [kickstart.nvim](https://github.com/nvim-
 brew install neovim ripgrep fd
 
 # Tree-sitter CLI (for compiling parsers)
-npm install -g tree-sitter-cli
+brew install tree-sitter-cli
 
 # Neovim providers
 npm install -g neovim
-pip install pynvim
+python3 -m venv ~/.local/share/nvim/python-provider
+~/.local/share/nvim/python-provider/bin/python -m pip install --upgrade pynvim
 
 # Linters (not managed by Mason)
 npm install -g markdownlint-cli
 ```
+
+The config automatically uses `~/.local/share/nvim/python-provider/bin/python`
+when available, keeping the Python provider independent of project virtualenvs.
 
 ## Install
 
@@ -149,6 +153,19 @@ Put custom plugins in `lua/custom/plugins/init.lua` and uncomment the import in 
 
 ```
 :Lazy update     " update plugins
-:MasonUpdate     " update LSP servers and tools
+:MasonUpdate     " refresh the Mason package registry
+:MasonToolsUpdate " install missing configured tools and update them
 :TSUpdate        " update treesitter parsers
 ```
+
+Update system dependencies and providers separately:
+
+```sh
+brew upgrade neovim ripgrep fd tree-sitter-cli
+npm install -g neovim markdownlint-cli
+~/.local/share/nvim/python-provider/bin/python -m pip install --upgrade pynvim
+```
+
+Use the Homebrew Tree-sitter CLI as required by current nvim-treesitter.
+If an older npm installation takes precedence in `PATH`, remove it with
+`npm uninstall -g tree-sitter-cli`, then check `tree-sitter --version`.
