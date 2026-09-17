@@ -409,6 +409,16 @@ require('lazy').setup({
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
+
+      -- Search everything gitignore would hide (`.env.local` etc.), minus these dirs.
+      -- fd (find_files) and rg (live_grep) need different flags for the same list.
+      local skip_dirs = { '.git', 'node_modules', 'dist', 'build', '.next', 'target', '.venv' }
+      local fd_excludes, rg_excludes = {}, {}
+      for _, dir in ipairs(skip_dirs) do
+        vim.list_extend(fd_excludes, { '--exclude', dir })
+        vim.list_extend(rg_excludes, { '--glob', '!**/' .. dir .. '/**' })
+      end
+
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
@@ -420,8 +430,12 @@ require('lazy').setup({
           file_ignore_patterns = { 'node_modules', '.git/' },
         },
         pickers = {
-          find_files = { hidden = true },
-          live_grep = { additional_args = { '--hidden' } },
+          find_files = {
+            hidden = true,
+            no_ignore = true,
+            find_command = vim.list_extend({ 'fd', '--type', 'f', '--color=never', '--hidden', '--no-ignore' }, fd_excludes),
+          },
+          live_grep = { additional_args = vim.list_extend({ '--hidden', '--no-ignore' }, rg_excludes) },
         },
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown() },
