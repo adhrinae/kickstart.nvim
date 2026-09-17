@@ -412,7 +412,7 @@ require('lazy').setup({
 
       -- Search everything gitignore would hide (`.env.local` etc.), minus these dirs.
       -- fd (find_files) and rg (live_grep) need different flags for the same list.
-      local skip_dirs = { '.git', 'node_modules', 'dist', 'build', '.next', 'target', '.venv' }
+      local skip_dirs = { '.git', 'node_modules', 'dist', 'build', '.next', 'target', '.venv', '__pycache__' }
       local fd_excludes, rg_excludes = {}, {}
       for _, dir in ipairs(skip_dirs) do
         vim.list_extend(fd_excludes, { '--exclude', dir })
